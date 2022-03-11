@@ -1,16 +1,35 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+  font-family: "Droid Sans Mono";
+  src: url("../public/fonts/DroidSansMono.ttf") format("opentype"); 
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/Montserrat-ExtraLight.ttf") format("opentype"); 
+}
+
+html, body, #__next {
+  height: 100%;
+  margin: 0;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.erroMsg {
+  color: red;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 250px;
+  font-family: "Droid Sans Mono";
+  
+}
+.successMsg {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 290px;
+  color: green;
+  font-family: "Droid Sans Mono";
+  word-wrap: normal;
 }
