@@ -8,7 +8,7 @@ export const Social = props => {
     } = props;
 
     return (
-        <a href="https://github.com/gabtonete" target='_blank'>
+        <a href="https://github.com/gabtonete" target='_blank' rel='noopener noreferrer'>
             <Image
                 src={socialSrc}
                 alt={socialAlt}
