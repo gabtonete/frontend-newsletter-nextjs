@@ -35,9 +35,11 @@ export default function Home() {
 
     } else {
       try {
+        console.log(body);
         await apiRequest('users', 'POST', body);
         setMsgSuccess('Usuário cadastrado com sucesso. Cheque sua caixa de spam! (｡◕‿◕｡)')
       } catch (e) {
+        console.log(body);
         if(e?.response?.data?.message){
           setMsgErro('E-mail já cadastrado na plataforma. ¯\\_(ツ)_/¯')
         }
