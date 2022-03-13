@@ -15,7 +15,7 @@ import github from '../public/images/github.svg';
 
 
 export default function Home() {
-
+  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msgErro, setMsgErro] = useState('');
