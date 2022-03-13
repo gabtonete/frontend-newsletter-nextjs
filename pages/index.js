@@ -22,11 +22,12 @@ export default function Home() {
   const [msgSuccess, setMsgSuccess] = useState('');
 
   const submitForm = async (e) => {
+    
+    e?.preventDefault();
 
     setMsgSuccess('');
     setMsgErro('');
 
-    e?.preventDefault();
 
     const body = { name, email }
 
@@ -36,6 +37,7 @@ export default function Home() {
     } else {
       try {
         await apiRequest('users', 'POST', body);
+        console.log(body)
         setMsgSuccess('Usuário cadastrado com sucesso. Cheque sua caixa de spam! (｡◕‿◕｡)')
       } catch (e) {
         if(e?.response?.data?.message){
