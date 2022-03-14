@@ -20,17 +20,19 @@ export default function Home() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msgSuccess, setMsgSuccess] = useState('');
+  const [msgErro, setMsgErro] = useState('');
 
   const submitForm = async (e) => {
 
     setMsgSuccess('');
+    setMsgErro('');
 
     e?.preventDefault();
 
     const body = { name, email }
 
     if (name.length < 1 || !emailValidation(email)) {
-      setMsgSuccess('Nome ou e-mail inválido. ¯\\_(ツ)_/¯')
+      setMsgErro('Nome ou e-mail inválido. ¯\\_(ツ)_/¯')
 
     } else {
       try {
@@ -41,12 +43,12 @@ export default function Home() {
         }
 
         if (result.status === 200) {
-          setMsgSuccess("Usuário já cadastrado na newsletter. ¯\\_(ツ)_/¯") 
+          setMsgErro("Usuário já cadastrado na newsletter. ¯\\_(ツ)_/¯") 
         }
 
       } catch (e) {
         if(e?.response?.data?.message){
-          setMsgSuccess('Erro interno do servidor, tente mais tarde. ¯\\_(ツ)_/¯')
+          setMsgErro('Erro interno do servidor, tente mais tarde. ¯\\_(ツ)_/¯')
         }
       }
     }
@@ -93,7 +95,14 @@ export default function Home() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
               />
-              {msgSuccess && <p className='successMsg'>{msgSuccess}</p>}
+              {
+              msgSuccess !== '' ? <p className='successMsg'>{msgSuccess}</p>
+              : <p>{msgSuccess}</p>
+              }
+              {
+              msgErro !== '' ? <p className='erroMsg'>{msgErro}</p>
+              : <p>{msgErro}</p>
+              }
               <Button
                 type="submit"
                 text="Inscrever-se"
