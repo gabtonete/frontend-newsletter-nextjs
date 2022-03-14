@@ -9,13 +9,14 @@ import { Button } from '../components/button';
 import { useState } from 'react';
 import { emailValidation } from '../utils/validation';
 import { apiRequest } from '../services/api';
-import Link from 'next/link';
 import { Social } from '../components/social';
 import github from '../public/images/github.svg';
+import { useEffect } from 'react';
+import { Footer } from '../components/footer';
 
 
 export default function Home() {
-  
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msgErro, setMsgErro] = useState('');
@@ -35,13 +36,19 @@ export default function Home() {
 
     } else {
       try {
-        console.log(body);
-        await apiRequest('users', 'POST', body);
-        setMsgSuccess('Usuário cadastrado com sucesso. Cheque sua caixa de spam! (｡◕‿◕｡)')
+        const result = await apiRequest('users', 'POST', body);
+
+        if(result.status === 201) {
+          setMsgSuccess("Inscrito na newsletter com sucesso! (ᵔᴥᵔ)")
+        }
+
+        if (result.status === 200) {
+          setMsgErro('Usuário já cadastrado na newsletter. ¯\\_(ツ)_/¯') 
+        }
+
       } catch (e) {
-        console.log(body);
         if(e?.response?.data?.message){
-          setMsgErro('E-mail já cadastrado na plataforma. ¯\\_(ツ)_/¯')
+          setMsgErro('Erro interno do servidor, tente mais tarde. ¯\\_(ツ)_/¯')
         }
       }
     }
@@ -88,8 +95,8 @@ export default function Home() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
               />
-                {msgErro && <p className='erroMsg'>{msgErro}</p>}
-                {msgSuccess && <p className='successMsg'>{msgSuccess}</p>}
+              <p className='successMsg'>{msgSuccess}</p>
+              <p className='erroMsg'>{msgErro}</p>
               <Button
                 type="submit"
                 text="Inscrever-se"
@@ -102,6 +109,7 @@ export default function Home() {
             socialAlt="My github"
           />
           </div>
+          <Footer />  
         </div>
       </main>
     </div>
