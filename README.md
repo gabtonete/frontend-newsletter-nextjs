@@ -8,3 +8,5 @@ This project is a responsive website using the react.js framework, Next.js. Base
 - Mobile-first concept, transmiting security to any mobile user
 - Axios backend integration
 - Next.js componentization using the best and most practices components
+
+This is a app under development, all inserted data in this platform will be deleted after 5 minutes.
