@@ -41,7 +41,7 @@ export default function Home() {
         }
 
         if (result.status === 200) {
-          setMsgSuccess('Usuário já cadastrado na newsletter. ¯\\_(ツ)_/¯') 
+          setMsgSuccess("Usuário já cadastrado na newsletter. ¯\\_(ツ)_/¯") 
         }
 
       } catch (e) {
@@ -93,7 +93,7 @@ export default function Home() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
               />
-              <p className='successMsg'>{msgSuccess}</p>
+              {msgSuccess && <p className='successMsg'>{msgSuccess}</p>}
               <Button
                 type="submit"
                 text="Inscrever-se"
