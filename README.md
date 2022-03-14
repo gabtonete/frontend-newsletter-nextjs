@@ -1,4 +1,4 @@
-Newsletter project in next.js
+# Newsletter project in next.js
 
 <a href="https://frontend-newsletter-nextjs.vercel.app/">Visit the application</a> | <a href="https://github.com/gabtonete/backend-newsletter-typescript">Visit the api source</a>
 
