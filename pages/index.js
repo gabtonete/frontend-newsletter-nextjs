@@ -21,11 +21,12 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [msgSuccess, setMsgSuccess] = useState('');
   const [msgErro, setMsgErro] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const submitForm = async (e) => {
-    
     e?.preventDefault();
 
+    setLoading(true);
     setMsgSuccess('');
     setMsgErro('');
 
@@ -52,6 +53,8 @@ export default function Home() {
           setMsgErro('Erro interno do servidor, tente mais tarde. ¯\\_(ツ)_/¯')
         }
       }
+
+      setLoading(false);
     }
   }
 
@@ -106,7 +109,7 @@ export default function Home() {
               }
               <Button
                 type="submit"
-                text="Inscrever-se"
+                text={loading? "...Carregando" : "Inscrever-se"}
               />
             </form>
           </div>
